@@ -10,7 +10,7 @@ def fs():
 @pytest.fixture(scope='function')
 def cfg():
     """Littlefs configuration fixture"""
-    cfg = lfs.LFSConfig(block_size=128, block_count=4)
+    cfg = lfs.LFSConfig(block_size=128, block_count=8)
     yield cfg
 
 @pytest.fixture(scope='function')
