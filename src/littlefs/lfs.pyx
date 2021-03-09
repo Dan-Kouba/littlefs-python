@@ -76,11 +76,11 @@ cdef class LFSConfig:
         self._impl.prog_size = kwargs.get('prog_size', block_size)
         self._impl.block_size = block_size
         self._impl.block_count = block_count
-        self._impl.block_cycles = kwargs.get('block_cycles', -1)
+        # self._impl.block_cycles = kwargs.get('block_cycles', -1)
         # Cache size, at least as big as read / prog size
-        self._impl.cache_size = kwargs.get('cache_size', max(self._impl.read_size, self._impl.prog_size))
+        # self._impl.cache_size = kwargs.get('cache_size', max(self._impl.read_size, self._impl.prog_size))
         # Lookahead buffer size in bytes
-        self._impl.lookahead_size = kwargs.get('lookahead_size', 8)
+        self._impl.lookahead = kwargs.get('lookahead_size', 8)
 
         if context is None:
             context = UserContext(self._impl.block_size * self._impl.block_count)
@@ -101,16 +101,8 @@ cdef class LFSConfig:
         return self._impl.block_size
 
     @property
-    def block_count(self):
-        return self._impl.block_count
-
-    @property
-    def cache_size(self):
-        return self._impl.cache_size
-
-    @property
     def lookahead_size(self):
-        return self._impl.lookahead_size
+        return self._impl.lookahead
 
 
 cdef class LFSFilesystem:
@@ -123,10 +115,6 @@ cdef class LFSFile:
 
 cdef class LFSDirectory:
     cdef lfs_dir_t _impl
-
-
-def fs_size(LFSFilesystem fs):
-    return _raise_on_error(lfs_fs_size(&fs._impl))
 
 
 def format(LFSFilesystem fs, LFSConfig cfg):

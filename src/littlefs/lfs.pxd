@@ -93,15 +93,11 @@ cdef extern from "lfs.h":
         lfs_size_t prog_size
         lfs_size_t block_size
         lfs_size_t block_count
-        int32_t block_cycles
-        lfs_size_t cache_size
-        lfs_size_t lookahead_size
+        lfs_size_t lookahead
         void *read_buffer
         void *prog_buffer
         void *lookahead_buffer
-        lfs_size_t name_max
-        lfs_size_t file_max
-        lfs_size_t attr_max
+        void *file_buffer
 
     int lfs_mount(lfs_t *lfs, const lfs_config *config)
     int lfs_format(lfs_t *lfs, const lfs_config *config)
