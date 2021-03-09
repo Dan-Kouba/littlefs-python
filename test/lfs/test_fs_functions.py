@@ -10,7 +10,7 @@ def test_mount_unformatted(fs, cfg):
     with pytest.raises(LittleFSError) as excinfo:
         lfs.mount(fs, cfg)
 
-    assert excinfo.value.code == -84
+    assert excinfo.value.code == -52
 
 
 def test_mount_formatted(fs, cfg):
@@ -32,7 +32,7 @@ def test_unmount(mounted_fs):
 def test_stat_root_directory(mounted_fs):
     """Test if stat works"""
     stat = lfs.stat(mounted_fs, '/')
-    assert stat.type == 2, 'Expected a directory type'
+    assert stat.type == 34, 'Expected a directory type'
     assert stat.name == '/'
 
 
@@ -44,5 +44,5 @@ def test_stat_file(mounted_fs):
     stat = lfs.stat(mounted_fs, 'test.txt')
 
     assert stat.size == 10
-    assert stat.type == 1
+    assert stat.type == 17
     assert stat.name == 'test.txt'

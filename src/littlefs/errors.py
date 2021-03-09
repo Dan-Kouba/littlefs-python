@@ -2,7 +2,7 @@
 
 ERROR_MAP = {
     -5: 'ERR_IO',
-    -84: 'ERR_CORRUPT',
+    -52: 'ERR_CORRUPT',
     -2: 'ERR_NOENT',
     -17: 'ERR_EXIST',
     -20: 'ERR_NOTDIR',

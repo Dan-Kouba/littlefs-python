@@ -175,9 +175,9 @@ class LittleFS:
         dirs = []
         from os import walk
         for elem in self.scandir(top):
-            if elem.type == 1:
+            if elem.type == 17:
                 files.append(elem.name)
-            elif elem.type == 2:
+            elif elem.type == 34:
                 dirs.append(elem.name)
         
         yield top, dirs, files
