@@ -20,13 +20,13 @@ def test_walk(fs):
     data = []
     for root, dirs, files in fs.walk('/'):
         data.append((root, dirs, files))
-    assert data == [
+    assert sorted(data) == sorted([
         ('/', ['dir'], []),
         ('/dir', ['emptyA', 'emptyB', 'sub'], ['file.txt']),
         ('/dir/emptyA', [], []),
         ('/dir/emptyB', [], []),
         ('/dir/sub', [], ['file.txt'])
-    ]
+    ])
 
 
 def test_walk_size(fs):

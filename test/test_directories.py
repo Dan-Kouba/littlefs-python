@@ -28,7 +28,7 @@ def test_mkdir(fs):
     assert 'test' in fs.listdir('/')
 
     fs.mkdir('./test1')
-    assert fs.listdir('/') == ['test1', 'test']
+    assert sorted(fs.listdir('/')) == sorted(['test1', 'test'])
 
 
 def test_mkdir_if_dir_exists(fs):
@@ -64,5 +64,5 @@ def test_makedirs(fs):
     fs.makedirs('/dir/sub/abc')
     assert fs.listdir('/') == ['dir']
     assert fs.listdir('/dir') == ['sub']
-    assert fs.listdir('/dir/sub') == ['abc', 'subsub']
+    assert sorted(fs.listdir('/dir/sub')) == sorted(['abc', 'subsub'])
 
